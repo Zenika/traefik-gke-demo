@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Hello world</title>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+  <script>
+    $( document ).ready(function() {
+      $("#btn-hello").click(function() {
+        $.get("/api", function( data ) {
+          $( "#result" ).text( data )
+        })
+      })
+    });
+  </script>
+</head>
+
+<body>
+  <button id="btn-hello">Say hello</button>
+  <div id="result"></div>
+</body>
+
+</html>
