@@ -1,0 +1,28 @@
+# declare Traefik deployment
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: traefik-deployment
+  labels:
+    app: traefik-gke-demo
+    tier: reverse-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: traefik-gke-demo
+      tier: reverse-proxy
+  template:
+    metadata:
+      labels:
+        app: traefik-gke-demo
+        tier: reverse-proxy
+    spec:
+      serviceAccountName: traefik-service-account
+      terminationGracePeriodSeconds: 60
+      containers:
+      - name: traefik
+        image: "traefik:1.6"
+        args:
+        - --api
+        - --kubernetes

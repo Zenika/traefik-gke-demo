@@ -1,0 +1,22 @@
+# declare back deployment
+kind: Deployment
+apiVersion: apps/v1beta1
+metadata:
+  name: back-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: traefik-gke-demo
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: traefik-gke-demo
+        tier: backend
+    spec:
+      containers:
+        - name: back
+          image: "vpoilvert/traefik-gke-demo-back:latest"
+          ports:
+            - containerPort: 3000

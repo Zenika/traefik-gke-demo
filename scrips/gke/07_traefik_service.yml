@@ -1,0 +1,17 @@
+# Declare Traefik ingress service
+kind: Service
+apiVersion: v1
+metadata:
+  name: traefik-service
+spec:
+  selector:
+    app: traefik-gke-demo
+    tier: reverse-proxy
+  ports:
+    - port: 80
+      name: http
+    - port: 443
+      name: https
+    - port: 8080
+      name: admin
+  type: LoadBalancer

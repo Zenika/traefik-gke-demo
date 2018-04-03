@@ -1,0 +1,13 @@
+# declare front service
+kind: Service
+apiVersion: v1
+metadata:
+  name: front-service
+spec:
+  selector:
+    app: traefik-gke-demo
+    tier: frontend
+  ports:
+  - port: 80
+    targetPort: 80
+  type: NodePort
