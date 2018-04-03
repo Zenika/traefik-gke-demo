@@ -3,11 +3,12 @@
 const express = require('express')
 const app = express()
 const router = express.Router()
+const os = require('os')
 
 var COUNTER = 0
 
 router.get('/', function (req, res) {
-  res.send('Hello World ' + COUNTER++)
+  res.send('Hello World ' + COUNTER++ + ' from ' + os.hostname())
 })
 
 app.use('/api', router)
