@@ -1,0 +1,20 @@
+version: '3'
+services:
+  front:
+    build: front/
+    labels:
+      - "traefik.frontend.rule=Path:/"
+      - "traefik.port=80"
+  back:
+    build: back/
+    labels:
+      - "traefik.frontend.rule=Path:/api"
+      - "traefik.port=3000"
+  reverse-proxy:
+    image: traefik
+    command: --api --docker
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
