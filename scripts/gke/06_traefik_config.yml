@@ -1,0 +1,25 @@
+# define Traefik configuration
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: traefik-config
+data:
+  traefik.toml: |
+    # traefik.toml
+    defaultEntryPoints = ["http","https"]
+    [entryPoints]
+      [entryPoints.http]
+      address = ":80"
+        [entryPoints.http.redirect]
+        entryPoint = "https"
+      [entryPoints.https]
+      address = ":443"
+        [entryPoints.https.tls]
+    [acme]
+    email = "vincent.poilvert@zenika.com"
+    storage = "/etc/traefik/acme/acme.json"
+    entryPoint = "https"
+    [acme.httpChallenge]
+      entryPoint = "http"
+    [[acme.domains]]
+    main = "traefik-gke-demo.zenika.com"

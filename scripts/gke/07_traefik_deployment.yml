@@ -20,9 +20,23 @@ spec:
     spec:
       serviceAccountName: traefik-service-account
       terminationGracePeriodSeconds: 60
+      volumes:
+        - name: config
+          configMap:
+            name: traefik-config
+        - name: demo-acme
+          gcePersistentDisk:
+            pdName: demo-acme
+            fsType: ext4
       containers:
       - name: traefik
         image: "traefik:1.6"
+        volumeMounts:
+          - mountPath: "/etc/traefik/config"
+            name: config
+          - mountPath: /etc/traefik/acme
+            name: demo-acme
         args:
+        - --configfile=/etc/traefik/config/traefik.toml
         - --api
         - --kubernetes

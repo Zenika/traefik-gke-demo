@@ -9,7 +9,8 @@ metadata:
     traefik.frontend.priority: "1"
 spec:
   rules:
-  - http:
+  - host: traefik-gke-demo.zenika.com
+    http:
       paths:
       - path: /api
         backend:
@@ -26,7 +27,8 @@ metadata:
     traefik.frontend.priority: "2"
 spec:
   rules:
-  - http:
+  - host: traefik-gke-demo.zenika.com
+    http:
       paths:
       - path: /
         backend:

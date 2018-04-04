@@ -23,7 +23,7 @@ rules:
       - list
       - watch
 ---
-# breate Traefik service account
+# create Traefik service account
 kind: ServiceAccount
 apiVersion: v1
 metadata:
