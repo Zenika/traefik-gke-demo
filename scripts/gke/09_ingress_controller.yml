@@ -6,7 +6,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.frontend.passHostHeader: "false"
-    traefik.frontend.priority: "1"
+    traefik.frontend.priority: "2"
 spec:
   rules:
   - host: traefik-gke-demo.zenika.com
@@ -24,7 +24,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.frontend.passHostHeader: "false"
-    traefik.frontend.priority: "2"
+    traefik.frontend.priority: "1"
 spec:
   rules:
   - host: traefik-gke-demo.zenika.com

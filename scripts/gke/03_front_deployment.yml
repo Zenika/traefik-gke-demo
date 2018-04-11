@@ -4,7 +4,7 @@ apiVersion: apps/v1beta1
 metadata:
   name: front-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: traefik-gke-demo
@@ -17,4 +17,4 @@ spec:
     spec:
       containers:
         - name: front
-          image: "vpoilvert/traefik-gke-demo-front:latest"
+          image: "zenika/traefik-gke-demo-front:1.0.0"
